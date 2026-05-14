@@ -412,11 +412,6 @@
       - type: ZombifyOnDeath
       - type: IncurableZombie
       - type: InitialInfected
-      # Corvax-MRP
-      - type: NpcFactionMember
-        addFriendlyFactions:
-        - Zombie
-      # Corvax
       mindRoles:
       - MindRoleInitialInfected
   - type: DynamicRuleCost
@@ -522,13 +517,14 @@
   parent: BaseGameRule
   components:
   - type: BasicStationEventScheduler
+  # Eclipse start
+    minimumTimeUntilFirstEvent: 300 # 5 min
+    minMaxEventTiming:
+      min: 450 # 7.5 min
+      max: 750 # 12.5 mis
+  # Eclipse end
     scheduledGameRules: !type:NestedSelector
       tableId: BasicGameRulesTable
-    # Corvax-MRP-start
-    minMaxEventTiming:
-      min: 300 # 5 mins # C# const- 3
-      max: 900 # 15 mins # C# const- 10
-    # Corvax-MRP-end
 
 - type: entity
   id: DynamicStationEventScheduler # this isn't the dynamic mode, but rather the station event scheduler used for dynamic
@@ -567,23 +563,25 @@
   components:
   - type: RoundstartStationVariationRule
     rules:
-    - id: BasicPoweredLightVariationPass
-    - id: BasicTrashVariationPass
+    # - id: BasicPoweredLightVariationPass Eclipse eidt
+    # - id: BasicTrashVariationPass # Eclipse edit
     - id: SolidWallRustingVariationPass
     - id: ReinforcedWallRustingVariationPass
-    - id: CutWireVariationPass
-    - id: BasicPuddleMessVariationPass
-      prob: 0.99
-      orGroup: puddleMess
-    - id: BloodbathPuddleMessVariationPass
-      prob: 0.01
-      orGroup: puddleMess
+    # Eclipse start
+    # - id: CutWireVariationPass
+    # - id: BasicPuddleMessVariationPass
+    #   prob: 0.99
+    #   orGroup: puddleMess
+    # - id: BloodbathPuddleMessVariationPass
+    #   prob: 0.01
+    #   orGroup: puddleMess
+    # Eclipse end
     - id: SmugglerStashVariationPass
       prob: 0.90
     - id: SolarPanelDamageVariationPass
     - id: SolarPanelEmptyVariationPass
     - id: BasicDecalDirtVariationPass
-    - id: BasicDecalGraffitiVariationPass
+    # - id: BasicDecalGraffitiVariationPass
     - id: BasicDecalBurnsVariationPass
       prob: 0.50
       orGroup: monospaceDecals

@@ -1,14 +1,25 @@
 - type: gamePreset
+  id: Calm
+  alias:
+    - calm
+    - quiet
+  name: calm-title
+  showInVote: true
+  description: calm-description
+  rules:
+    - EclipseCalmStationEventScheduler
+    - BasicRoundstartVariation
+
+- type: gamePreset
   id: Survival
   alias:
     - survival
   name: survival-title
-  showInVote: false # secret
+  showInVote: true
   description: survival-description
   rules:
-    - MeteorSwarmScheduler
-    - RampingStationEventScheduler
-    - SpaceTrafficControlEventScheduler
+    - EclipseSurvivalDynamicRule
+    - EclipseSurvivalStationEventScheduler
     - BasicRoundstartVariation
 
 - type: gamePreset
@@ -76,12 +87,10 @@
   - extended
   - shittersafari
   name: extended-title
-  showInVote: false #2boring2vote
+  showInVote: true
   description: extended-description
   rules:
-  - BasicStationEventScheduler
-  - MeteorSwarmScheduler
-  - SpaceTrafficControlEventScheduler
+  - EclipseExtendedScenario
   - BasicRoundstartVariation
 
 - type: gamePreset
@@ -90,7 +99,7 @@
   - greenshift
   - shittersafarideluxeedition
   name: greenshift-title
-  showInVote: false #4boring4vote
+  showInVote: false
   description: greenshift-description
   rules:
   - BasicRoundstartVariation
@@ -118,10 +127,24 @@
     - secret
     - sekrit
   name: secret-title
-  showInVote: true
+  showInVote: false
   description: secret-description
   rules:
     - Secret
+
+- type: gamePreset
+  id: Apocalypse
+  alias:
+    - apocalypse
+    - apoc
+  name: apocalypse-title
+  showInVote: false
+  description: apocalypse-description
+  rules:
+    - EclipseApocalypseDynamicRule
+    - EclipseApocalypseStationEventScheduler
+    - EclipseApocalypseWarningRule
+    - BasicRoundstartVariation
 
 - type: gamePreset
   id: Sandbox
@@ -159,7 +182,7 @@
   name: death-match-title
   description: death-match-description
   maxPlayers: 15
-  showInVote: true
+  showInVote: false
   supportedMaps: DeathMatchMapPool
   rules:
     - DeathMatch31

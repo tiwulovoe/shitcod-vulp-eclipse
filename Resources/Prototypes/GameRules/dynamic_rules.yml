@@ -1,9 +1,11 @@
-﻿- type: entity
+- type: entity
   parent: BaseGameRule
   id: DynamicRule
   components:
   - type: GameRule
-    minPlayers: 5 # <5 is greenshift hours, buddy.
+    # Eclipse Extended reuses this rule as a nested difficulty option,
+    # so it needs to stay startable on low population too.
+    minPlayers: 1
   - type: DynamicRule
     startingBudgetMin: 200
     startingBudgetMax: 350
@@ -61,7 +63,7 @@
       - !type:GroupSelector
         conditions:
         - !type:RoundDurationCondition
-          min: 300 # minimum 5 minutes
+          min: 2400 # minimum 40 minutes Eclipse edit
         children:
         - id: SleeperAgents
           weight: 15
@@ -69,21 +71,21 @@
           - !type:HasBudgetCondition
           - !type:MaxRuleOccurenceCondition
           - !type:RoundDurationCondition
-            min: 900 # 15 minutes
+            min: 2400 # minimum 40 minutes Eclipse edit
         - id: DragonSpawn
           weight: 15
           conditions:
           - !type:HasBudgetCondition
           - !type:MaxRuleOccurenceCondition
           - !type:RoundDurationCondition
-            min: 900 # 15 minutes
+            min: 4800 # 80 minutes Eclipse edit
         - id: NinjaSpawn
           weight: 20
           conditions:
           - !type:HasBudgetCondition
           - !type:MaxRuleOccurenceCondition
           - !type:RoundDurationCondition
-            min: 900 # 15 minutes
+            min: 2400 # minimum 40 minutes Eclipse edit
         - id: ParadoxCloneSpawn
           weight: 25
           conditions:
@@ -109,4 +111,4 @@
           - !type:PlayerCountCondition
             min: 20
           - !type:RoundDurationCondition
-            min: 2100 # 35 minutes
+            min: 4800 # 80 minutes Eclipse edit

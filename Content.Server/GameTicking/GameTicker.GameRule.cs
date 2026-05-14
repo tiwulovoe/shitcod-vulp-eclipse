@@ -309,7 +309,7 @@ public sealed partial class GameTicker
     }
 
     /// <summary>
-    /// Gets all the gamerule entities that have been added.
+    /// Gets all the gamerule entities which are currently active.
     /// </summary>
     public IEnumerable<EntityUid> GetAddedGameRules()
     {
@@ -322,7 +322,7 @@ public sealed partial class GameTicker
     }
 
     /// <summary>
-    /// Gets all the gamerule entities with {T} component that have been added.
+    /// Gets all the gamerule entities with <typeparamref name="T"/> component that have been added.
     /// </summary>
     public IEnumerable<Entity<T>> GetAddedGameRules<T>() where T : Component
     {
@@ -333,7 +333,6 @@ public sealed partial class GameTicker
                 yield return (uid, comp);
         }
     }
-
 
     /// <summary>
     /// Gets all the gamerule entities which are currently active.
@@ -348,7 +347,7 @@ public sealed partial class GameTicker
     }
 
     /// <summary>
-    /// Gets all the gamerule entities with {T} component that are currently active.
+    /// Gets all the gamerule entities with <typeparamref name="T"/> component that are currently active.
     /// </summary>
     public IEnumerable<Entity<T>> GetActiveGameRules<T>() where T : Component
     {

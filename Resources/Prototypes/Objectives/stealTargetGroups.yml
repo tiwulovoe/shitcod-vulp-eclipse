@@ -249,14 +249,12 @@
     sprite: Clothing/Belt/ce.rsi
     state: icon
 
-# Corvax-StealTarget-start
-#- type: stealTargetGroup
-#  id: SalvageExpeditionsComputerCircuitboard
-#  name: steal-target-groups-salvage-expeditions-computer-circuitboard
-#  sprite:
-#    sprite: Objects/Misc/module.rsi
-#    state: cpu_supply
-# Corvax-StealTarget-end
+- type: stealTargetGroup
+  id: SalvageExpeditionsComputerCircuitboard
+  name: steal-target-groups-salvage-expeditions-computer-circuitboard
+  sprite:
+    sprite: Objects/Misc/module.rsi
+    state: cpu_supply
 
 - type: stealTargetGroup
   id: CargoShuttleConsoleCircuitboard
