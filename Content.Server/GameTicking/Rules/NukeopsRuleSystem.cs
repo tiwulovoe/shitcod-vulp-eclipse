@@ -42,7 +42,6 @@ using Robust.Shared.Utility;
 using System.Data;
 using System.Linq;
 using System.Text;
-using Content.Shared.CombatMode.Pacification;//Corvax-DionaPacifist
 
 namespace Content.Server.GameTicking.Rules;
 
@@ -587,7 +586,6 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
     {
         var target = (ent.Comp.TargetStation is not null) ? Name(ent.Comp.TargetStation.Value) : "the target";
 
-        RemComp<PacifiedComponent>(args.EntityUid); // Corvax-DionaPacifist: Allow dionas nukes to harm
         _antag.SendBriefing(args.Session,
             Loc.GetString("nukeops-welcome",
                 ("station", target),

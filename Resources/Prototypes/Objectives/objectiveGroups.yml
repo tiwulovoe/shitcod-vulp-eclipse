@@ -6,9 +6,7 @@
     TraitorObjectiveGroupKill: 1
     TraitorObjectiveGroupState: 1 #As in, something about your character. Alive, dead, arrested, gained an ability...
     TraitorObjectiveGroupSocial: 1 #Involves helping/harming others without killing them or stealing their stuff
-    TraitorObjectiveGroupSabotage: 1
     TraitorObjectiveGroupOther: 1
-    TraitorObjectiveGroupNukieDisk: 0.05  #Corvax
 
 - type: weightedRandom
   id: TraitorObjectiveGroupSteal
@@ -16,8 +14,8 @@
     CaptainIDStealObjective: 1
     CMOHyposprayStealObjective: 1
     CMOCrewMonitorStealObjective: 1
-    #NukeDiskStealObjective: 1 #Corvax
     RDHardsuitStealObjective: 1
+    NukeDiskStealObjective: 1
     MagbootsStealObjective: 1
     CorgiMeatStealObjective: 1
     ClipboardStealObjective: 1
@@ -39,7 +37,7 @@
   weights:
     EscapeShuttleObjective: 1
     DieObjective: 0.2
-    HijackShuttleObjective: 0.02 #Corvax-Hijack
+    #HijackShuttleObjective: 0.02
 
 - type: weightedRandom
   id: TraitorObjectiveGroupSocial
@@ -47,17 +45,11 @@
 #    RandomTraitorAliveObjective: 1 - Removed because the objective was boring and didn't progress the round.
     RandomTraitorProgressObjective: 1
 
-- type: weightedRandom
-  id: TraitorObjectiveGroupSabotage
-  weights:
-    SupercritAnomaliesObjective: 1
-
 #misc objectives that don't fall other another category
 - type: weightedRandom
   id: TraitorObjectiveGroupOther
   weights:
     HijackTradeStationObjective: 1
-    MailFraudObjective: 1
 
 
 #Thief groups
@@ -100,7 +92,7 @@
     MedicalTechFabCircuitboardStealObjective: 1
     FireAxeStealObjective: 1                            #eng
     AmePartFlatpackStealObjective: 1
-    # ExpeditionsCircuitboardStealObjective: 1           #sup  # Corvax-StealTarget
+    ExpeditionsCircuitboardStealObjective: 1            #sup
     CargoShuttleCircuitboardStealObjective: 1
     BibleStealObjective: 1
     ClothingNeckGoldmedalStealObjective: 1              #other

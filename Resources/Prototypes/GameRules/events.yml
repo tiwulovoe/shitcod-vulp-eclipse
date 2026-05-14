@@ -46,6 +46,7 @@
     - id: ZombieOutbreak
     - id: LoneOpsSpawn
     - id: WizardSpawn
+    # - id: NightmareSpawn # Erida-edit
     - !type:NestedSelector
       tableId: DerelictBorgEventTable
 
@@ -73,8 +74,8 @@
   components:
   - type: GameRule
     delay:
-      min:  20 # Corvax-MRP # 10
-      max:  30 # Corvax-MRP # 20
+      min:  10
+      max:  20
 
 - type: entity
   id: BaseStationEventShortDelay
@@ -83,8 +84,8 @@
   components:
   - type: GameRule
     delay:
-      min:  20 # Corvax-MRP # 10
-      max:  30 # Corvax-MRP # 20
+      min:  10
+      max:  20
 
 - type: entity
   id: BaseStationEventLongDelay
@@ -93,8 +94,8 @@
   components:
   - type: GameRule
     delay:
-      min:  50 # Corvax-MRP # 40
-      max:  70 # Corvax-MRP # 60
+      min:  40
+      max:  60
 
 - type: entity
   id: AnomalySpawn
@@ -103,9 +104,7 @@
   - type: StationEvent
     startAnnouncementColor: "#18abf5"
     startAudio:
-      path: /Audio/Corvax/Announcements/flux.ogg # Corvax-Announcements
-      params:
-        volume: -4
+      path: /Audio/Announcements/announce.ogg
     weight: 8
     duration: 35
   - type: AnomalySpawnRule
@@ -121,9 +120,7 @@
   - type: StationEvent
     startAnnouncementColor: "#18abf5"
     startAudio:
-      path: /Audio/Corvax/Announcements/blusp_anomalies.ogg # Corvax-Announcements
-      params:
-        volume: -4
+      path: /Audio/Announcements/announce.ogg
     weight: 8
     duration: 35
   - type: BluespaceArtifactRule
@@ -144,8 +141,6 @@
   parent: BaseGameRule
   components:
   - type: StationEvent
-    startAudio: # Corvax-Announcements
-      path: /Audio/Corvax/Announcements/apc.ogg
     weight: 7
     duration: 1
     minimumPlayers: 15
@@ -196,8 +191,8 @@
   components:
   - type: StationEvent
     weight: 6.5
-    earliestStart: 50 # Corvax-MRP # 40
-    reoccurrenceDelay: 30 # Corvax-MRP # 20
+    earliestStart: 40
+    reoccurrenceDelay: 20
     minimumPlayers: 20
     duration: null
   - type: SpaceSpawnRule
@@ -319,7 +314,7 @@
     weight: 7.5
     duration: 1
     earliestStart: 45
-    minimumPlayers: 30 # Corvax-MRP # 20
+    minimumPlayers: 20
   - type: RandomSpawnRule
     prototype: MobRevenant
 
@@ -379,15 +374,9 @@
   - type: StationEvent
     startAnnouncement: station-event-gas-leak-start-announcement
     startAudio:
-      path: /Audio/Announcements/gasleak_start.ogg # Corvax-Announcements
-      params:
-        volume: -4
+      path: /Audio/Announcements/attention.ogg
     endAnnouncement: station-event-gas-leak-end-announcement
     weight: 8
-    endAudio:
-      path: /Audio/Announcements/gasleak_end.ogg # Corvax-Announcements
-      params:
-        volume: -4
   - type: GasLeakRule
 
 - type: entity
@@ -425,10 +414,8 @@
     weight: 8
     startAnnouncement: station-event-solar-flare-start-announcement
     endAnnouncement: station-event-solar-flare-end-announcement
-    startAudio: # Corvax-Announcements
-      path: /Audio/Corvax/Announcements/comms_blackout.ogg
-      params:
-        volume: -4
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
     duration: 120
     maxDuration: 240
   - type: SolarFlareRule
@@ -454,9 +441,7 @@
   - type: StationEvent
     startAnnouncement: station-event-vent-clog-start-announcement
     startAudio:
-      path: /Audio/Announcements/ventclog.ogg # Corvax-Announcements
-      params:
-        volume: -4
+      path: /Audio/Announcements/attention.ogg
     earliestStart: 15
     minimumPlayers: 15
     weight: 5
@@ -494,7 +479,7 @@
     startAnnouncement: station-event-vent-creatures-start-horde-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    earliestStart: 30 # Corvax-MRP # 20
+    earliestStart: 20
     minimumPlayers: 15
     weight: 5
     duration: 5
@@ -534,7 +519,7 @@
     startAnnouncement: station-event-vent-creatures-start-horde-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    earliestStart: 30 # Corvax-MRP # 20
+    earliestStart: 20
     minimumPlayers: 20
     weight: 1.5
     duration: 5
@@ -576,11 +561,6 @@
       - type: ZombifyOnDeath
       - type: IncurableZombie
       - type: InitialInfected
-      # Corvax-MRP
-      - type: NpcFactionMember
-        addFriendlyFactions:
-        - Zombie
-      # Corvax
       mindRoles:
       - MindRoleInitialInfected
   - type: DynamicRuleCost
@@ -591,7 +571,7 @@
   id: LoneOpsSpawn
   components:
   - type: StationEvent
-    earliestStart: 40 # Corvax-MRP # 30
+    earliestStart: 35
     weight: 5.5
     minimumPlayers: 20
     duration: null # LoneOpsSpawn needs an infinite duration so that it inherits the NukeOpsRule things of an actually appropriate end screen (not always "Neutral outcome!") and... ending the game if the station is nuked.
@@ -629,7 +609,7 @@
   id: SleeperAgents
   components:
   - type: StationEvent
-    earliestStart: 40 # Corvax-MRP # 30
+    earliestStart: 30
     weight: 8
     minimumPlayers: 15
     maxOccurrences: 1 # can only happen once per round
