@@ -16,7 +16,7 @@
   - type: SpeakOnUIClosed
     pack: GenericVendGoodbyes
   - type: Sprite
-    sprite: _Erida/Structures/Machines/VendingMachines/erp-machine.rsi
+    sprite: _Eclipse/Structures/Machines/VendingMachines/erp-machine.rsi
     layers:
     - state: "off"
       map: ["enum.VendingMachineVisualLayers.Base"]

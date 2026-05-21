@@ -7,7 +7,7 @@
         !type:EyeColoring
           negative: true
   sprites:
-  - sprite: _Erida/Customization/Markings/headaugs.rsi
+  - sprite: _Eclipse/Customization/Markings/headaugs.rsi
     state: malstrem
 
 - type: marking
@@ -19,7 +19,7 @@
         !type:EyeColoring
           negative: true
   sprites:
-  - sprite: _Erida/Customization/Markings/headaugs.rsi
+  - sprite: _Eclipse/Customization/Markings/headaugs.rsi
     state: beholder
 
 - type: marking
@@ -31,7 +31,7 @@
         !type:EyeColoring
           negative: true
   sprites:
-  - sprite: _Erida/Customization/Markings/headaugs.rsi
+  - sprite: _Eclipse/Customization/Markings/headaugs.rsi
     state: terminator
 
 - type: marking
@@ -43,5 +43,5 @@
         !type:EyeColoring
           negative: true
   sprites:
-  - sprite: _Erida/Customization/Markings/headaugs.rsi
+  - sprite: _Eclipse/Customization/Markings/headaugs.rsi
     state: iron_jaw

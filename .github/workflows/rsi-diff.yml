@@ -39,36 +39,42 @@ jobs:
           headname: ${{ github.event.pull_request.head.repo.full_name }}
           headsha: ${{ github.event.pull_request.head.sha }}
 
-      - name: Potentially find comment
-        uses: peter-evans/find-comment@v1
-        id: fc
-        with:
-          issue-number: ${{ github.event.number }}
-          comment-author: 'github-actions[bot]'
-          body-includes: RSI Diff Bot
+      - name: Create or update comment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BODY: ${{ steps.diff.outputs.summary-details }}
+          ISSUE_NUMBER: ${{ github.event.number }}
+          REPOSITORY: ${{ github.repository }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
 
-      - name: Create comment if it doesn't exist
-        if: steps.fc.outputs.comment-id == ''
-        uses: peter-evans/create-or-update-comment@v1
-        with:
-          issue-number: ${{ github.event.number }}
-          body: |
-            ${{ steps.diff.outputs.summary-details }}
+          if ! comment_id="$(
+            gh api "repos/${REPOSITORY}/issues/${ISSUE_NUMBER}/comments" \
+              --jq '.[] | select(.user.login == "github-actions[bot]" and (.body | contains("RSI Diff Bot"))) | .id' \
+              | head -n 1
+          )"; then
+            echo "::warning::Unable to read existing RSI diff comments."
+            exit 0
+          fi
 
-      - name: Update comment if it exists
-        if: steps.fc.outputs.comment-id != ''
-        uses: peter-evans/create-or-update-comment@v1
-        with:
-          comment-id: ${{ steps.fc.outputs.comment-id }}
-          edit-mode: replace
-          body: |
-            ${{ steps.diff.outputs.summary-details }}
+          body="${BODY}"
+          if [ -n "$comment_id" ]; then
+            body="${body}"$'\n\n'"Edit: diff updated after ${HEAD_SHA}"
+          fi
 
-      - name: Update comment to read that it has been edited
-        if: steps.fc.outputs.comment-id != ''
-        uses: peter-evans/create-or-update-comment@v1
-        with:
-          comment-id: ${{ steps.fc.outputs.comment-id }}
-          edit-mode: append
-          body: |
-            Edit: diff updated after ${{ github.event.pull_request.head.sha }}
+          jq -n --arg body "$body" '{ body: $body }' > comment.json
+
+          if [ -n "$comment_id" ]; then
+            gh api \
+              --method PATCH \
+              "repos/${REPOSITORY}/issues/comments/${comment_id}" \
+              --input comment.json \
+              || echo "::warning::Unable to update RSI diff comment."
+          else
+            gh api \
+              --method POST \
+              "repos/${REPOSITORY}/issues/${ISSUE_NUMBER}/comments" \
+              --input comment.json \
+              || echo "::warning::Unable to create RSI diff comment."
+          fi

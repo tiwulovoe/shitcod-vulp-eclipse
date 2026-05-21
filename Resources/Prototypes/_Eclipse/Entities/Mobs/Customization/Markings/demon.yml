@@ -3,7 +3,7 @@
   bodyPart: Tail
 #  speciesRestriction: [Demon]
   sprites:
-  - sprite: _Erida/Mobs/Demon/custom.rsi
+  - sprite: _Eclipse/Mobs/Demon/custom.rsi
     state: demon_tail
 
 - type: marking
@@ -11,7 +11,7 @@
   bodyPart: Tail
 #  speciesRestriction: [Demon]
   sprites:
-  - sprite: _Erida/Mobs/Demon/custom.rsi
+  - sprite: _Eclipse/Mobs/Demon/custom.rsi
     state: long
 
 - type: marking
@@ -19,7 +19,7 @@
   bodyPart: Tail
 #  speciesRestriction: [Demon]
   sprites:
-  - sprite: _Erida/Mobs/Demon/custom.rsi
+  - sprite: _Eclipse/Mobs/Demon/custom.rsi
     state: up
 
 - type: marking
@@ -27,7 +27,7 @@
   bodyPart: HeadSide
 #  speciesRestriction: [Demon]
   sprites:
-  - sprite: _Erida/Mobs/Demon/custom.rsi
+  - sprite: _Eclipse/Mobs/Demon/custom.rsi
     state: cow_ears
 
 - type: marking
@@ -35,7 +35,7 @@
   bodyPart: HeadSide
 #  speciesRestriction: [Demon]
   sprites:
-  - sprite: _Erida/Mobs/Demon/custom.rsi
+  - sprite: _Eclipse/Mobs/Demon/custom.rsi
     state: demon_ears
 
 - type: marking
@@ -43,7 +43,7 @@
   bodyPart: HeadTop
 #  speciesRestriction: [Anthropomorph, Demon]
   sprites:
-  - sprite: _Erida/Mobs/Demon/custom.rsi
+  - sprite: _Eclipse/Mobs/Demon/custom.rsi
     state: cow_horns
 
 - type: marking
@@ -51,7 +51,7 @@
   bodyPart: HeadTop
 #  speciesRestriction: [Anthropomorph, Demon]
   sprites:
-  - sprite: _Erida/Mobs/Demon/custom.rsi
+  - sprite: _Eclipse/Mobs/Demon/custom.rsi
     state: deer_antlers_horns
 
 - type: marking
@@ -59,7 +59,7 @@
   bodyPart: HeadTop
 #  speciesRestriction: [Anthropomorph, Demon]
   sprites:
-  - sprite: _Erida/Mobs/Demon/custom.rsi
+  - sprite: _Eclipse/Mobs/Demon/custom.rsi
     state: small_horns
 
 - type: marking
@@ -67,7 +67,7 @@
   bodyPart: Chest
 #  speciesRestriction: [Demon]
   sprites:
-  - sprite: _Erida/Mobs/Demon/custom.rsi
+  - sprite: _Eclipse/Mobs/Demon/custom.rsi
     state: cow_spots
 
 - type: marking
@@ -75,7 +75,7 @@
   bodyPart: Chest
 #  speciesRestriction: [Demon]
   sprites:
-  - sprite: _Erida/Mobs/Demon/custom.rsi
+  - sprite: _Eclipse/Mobs/Demon/custom.rsi
     state: guards_stripes
 
 - type: marking
@@ -83,7 +83,7 @@
   bodyPart: Chest
 #  speciesRestriction: [Demon]
   sprites:
-  - sprite: _Erida/Mobs/Demon/custom.rsi
+  - sprite: _Eclipse/Mobs/Demon/custom.rsi
     state: lines_emperos
 
 - type: marking
@@ -91,7 +91,7 @@
   bodyPart: Chest
 #  speciesRestriction: [Demon]
   sprites:
-  - sprite: _Erida/Mobs/Demon/custom.rsi
+  - sprite: _Eclipse/Mobs/Demon/custom.rsi
     state: queen_lines
 
 - type: marking
@@ -99,7 +99,7 @@
   bodyPart: Chest
 #  speciesRestriction: [Demon]
   sprites:
-  - sprite: _Erida/Mobs/Demon/custom.rsi
+  - sprite: _Eclipse/Mobs/Demon/custom.rsi
     state: tree_lines
 
 - type: marking
@@ -107,7 +107,7 @@
   bodyPart: Chest
 #  speciesRestriction: [Demon]
   sprites:
-  - sprite: _Erida/Mobs/Demon/custom.rsi
+  - sprite: _Eclipse/Mobs/Demon/custom.rsi
     state: trinity_spots
 
 - type: marking
@@ -115,12 +115,12 @@
   bodyPart: FacialHair
 #  speciesRestriction: [Demon]
   sprites:
-  - sprite: _Erida/Mobs/Demon/custom.rsi
+  - sprite: _Eclipse/Mobs/Demon/custom.rsi
     state: goatee
 
 - type: marking
   id: TailDemon
   bodyPart: Tail
   sprites:
-    - sprite: _Erida/Mobs/Demon/custom.rsi
+    - sprite: _Eclipse/Mobs/Demon/custom.rsi
       state: tail

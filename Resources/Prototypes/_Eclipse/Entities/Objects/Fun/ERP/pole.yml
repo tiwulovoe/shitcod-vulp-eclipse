@@ -5,6 +5,6 @@
   description: LPPPole
   components:
     - type: Sprite
-      sprite: _Erida/Objects/Fun/ERP/pole.rsi
+      sprite: Eclipse/Objects/Fun/ERP/pole.rsi
       state: pole
 
