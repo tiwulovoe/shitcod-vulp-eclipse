@@ -7,8 +7,7 @@ on:
 
 permissions:
   contents: read
-  issues: write
-  pull-requests: write
+  pull-requests: read
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -42,42 +41,14 @@ jobs:
           headname: ${{ github.event.pull_request.head.repo.full_name }}
           headsha: ${{ github.event.pull_request.head.sha }}
 
-      - name: Create or update comment
+      - name: Write diff summary
         env:
-          GH_TOKEN: ${{ github.token }}
           BODY: ${{ steps.diff.outputs.summary-details }}
-          ISSUE_NUMBER: ${{ github.event.number }}
-          REPOSITORY: ${{ github.repository }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           set -euo pipefail
 
-          if ! comment_id="$(
-            gh api "repos/${REPOSITORY}/issues/${ISSUE_NUMBER}/comments" \
-              --jq '.[] | select(.user.login == "github-actions[bot]" and (.body | contains("RSI Diff Bot"))) | .id' \
-              | head -n 1
-          )"; then
-            echo "::warning::Unable to read existing RSI diff comments."
-            exit 0
-          fi
-
-          body="${BODY}"
-          if [ -n "$comment_id" ]; then
-            body="${body}"$'\n\n'"Edit: diff updated after ${HEAD_SHA}"
-          fi
-
-          jq -n --arg body "$body" '{ body: $body }' > comment.json
-
-          if [ -n "$comment_id" ]; then
-            gh api \
-              --method PATCH \
-              "repos/${REPOSITORY}/issues/comments/${comment_id}" \
-              --input comment.json \
-              || echo "::warning::Unable to update RSI diff comment."
-          else
-            gh api \
-              --method POST \
-              "repos/${REPOSITORY}/issues/${ISSUE_NUMBER}/comments" \
-              --input comment.json \
-              || echo "::warning::Unable to create RSI diff comment."
-          fi
+          {
+            echo '## RSI Diff'
+            echo
+            printf '%s\n' "$BODY"
+          } >> "$GITHUB_STEP_SUMMARY"
